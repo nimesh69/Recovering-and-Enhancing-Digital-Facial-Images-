@@ -12,8 +12,8 @@ This project focuses on recovering facial images using Generative Adversarial Ne
    ```
 2. **Create a virtual environment:**
    ```bash
-conda create -n name python=3.9
-conda activate name
+    conda create -n name python=3.9
+    conda activate name
    ```
 3. **Install dependencies:**
    ```bash
