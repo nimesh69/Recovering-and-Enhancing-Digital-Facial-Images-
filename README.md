@@ -1,5 +1,4 @@
 # Recovering-and-Enhancing-Digital-Facial-Images-
-# Recovering Facial Image Using GAN
 
 ## Project Overview
 This project focuses on recovering facial images using Generative Adversarial Networks (GANs). The goal is to reconstruct high-quality facial images from corrupted or low-resolution inputs. The project utilizes **StyleGAN**, a state-of-the-art GAN architecture known for generating highly realistic images.
@@ -8,13 +7,13 @@ This project focuses on recovering facial images using Generative Adversarial Ne
 ### Setup Instructions
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/recovering-facial-gan.git
-   cd recovering-facial-gan
+   git clone https://github.com/nimesh69/Recovering-and-Enhancing-Digital-Facial-Images-.git
+   cd GFPGAN
    ```
 2. **Create a virtual environment:**
    ```bash
-   python -m venv env
-   source env/bin/activate  # On Windows use `env\Scripts\activate`
+conda create -n name python=3.9
+conda activate name
    ```
 3. **Install dependencies:**
    ```bash
@@ -24,7 +23,7 @@ This project focuses on recovering facial images using Generative Adversarial Ne
 ## Data
 
 ### Dataset
-This project uses the **CelebA** dataset, which contains over 200,000 facial images with various attributes. The dataset provides high-resolution face images with diverse appearances.
+This project uses the **CelebA, FFHQ, Asian Faces, our own custom dataset** dataset, which contains over 100,000 facial images with various attributes. The dataset provides high-resolution face images with diverse appearances.
 
 ### Data Preparation
 1. **Download the dataset:**
