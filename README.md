@@ -27,25 +27,24 @@ This project uses the **CelebA, FFHQ, Asian Faces, our own custom dataset** data
 
 ### Data Preparation
 1. **Download the dataset:**
-   - Download from the official CelebA website or Kaggle.
+   - Download from the Kaggle (https://www.kaggle.com/datasets/aadish888/completephoto).
 2. **Preprocess the data:**
    ```python
-   python preprocess.py --data_path /path/to/celeba --output_path /path/to/processed_data
+   cd Essential files/Resize_image
+   python resize.py
    ```
-   - Resizing images to 128x128 resolution.
-   - Normalizing pixel values to the range [-1, 1].
-   - Applying data augmentation techniques such as flipping and cropping.
-
+   - Resizing according to your requirement.
+3. **Extract face from the dataset(multiple face):**
+    ```python
+   cd Essential files\Extract image to train
+   python extract.py
+   ```
 ## Training
 
 ### Training Process
 - **Hyperparameters:**
-  - Learning rate: 0.0002
-  - Batch size: 32
-  - Number of epochs: 100
-  - Optimizer: Adam
-  - Loss function: Adversarial + Perceptual Loss
-
+    - Adjust config file according to your need.
+        - GFPGAN\options\train_gfpgan_v1_simple.yml
 ### Training Instructions
 To start training the model, run the following command:
 ```bash
