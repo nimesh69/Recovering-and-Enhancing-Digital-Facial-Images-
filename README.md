@@ -50,10 +50,13 @@ To start training the model, run the following command:
 ```bash
 BASICSR_JIT=True python train.py -opt train_gfpgan_v1_simple.yml
 ```
+if you want to train the model at custom size then following changes should be done in the code(utils.py) 
 <p align="center">
-  <img src="https://xinntao.github.io/projects/GFPGAN_src/gfpgan_teaser.jpg">
+  <img src="https://i.postimg.cc/Jzj0PyfT/code.png">
 </p>
-
+<p align="center">
+  <img src="https://i.postimg.cc/8P2sRd0J/code2.png">
+</p>
 ## Testing
 
 ### Evaluation Metrics
@@ -112,18 +115,6 @@ To generate images from the trained model:
 
 ## React App Integration
 
-### Interaction with Model
-The React app allows users to upload an image and receive a recovered facial image from the trained GAN model via an API.
-<p align="center">
-  <img src="https://xinntao.github.io/projects/GFPGAN_src/gfpgan_teaser.jpg">
-</p>
-### Functionalities
-- Image upload and preview
-- Submit for processing
-- View results side-by-side with the input
-<p align="center">
-  <img src="https://xinntao.github.io/projects/GFPGAN_src/gfpgan_teaser.jpg">
-</p>
 
 ### Running the React App
 1. Navigate to the `react-app` directory:
@@ -139,30 +130,37 @@ The React app allows users to upload an image and receive a recovered facial ima
    npm start dev
    ```
 4. Run the API 
-      ```bash
+   ```bash
    python main.py
    ```
+5. Adjust the end point for the API on main,py and trynow.tsx files
+   <p align="center">
+  <img src="https://i.postimg.cc/9fpMH6FZ/code3.png">
+</p>
+   <p align="center">
+  <img src="https://i.postimg.cc/yNBd51B7/code4.png">
+</p>
+
 After starting the server you will see the following interface
 <p align="center">
-  <img src="https://xinntao.github.io/projects/GFPGAN_src/gfpgan_teaser.jpg">
+  <img src="https://i.postimg.cc/c1jJWMZ9/Screenshot-2025-01-28-185119.png">
 </p>
 click on Try now button to get started
 <p align="center">
-  <img src="https://xinntao.github.io/projects/GFPGAN_src/gfpgan_teaser.jpg">
-</p>
-you will see the following interface
-<p align="center">
-  <img src="https://xinntao.github.io/projects/GFPGAN_src/gfpgan_teaser.jpg">
+  <img src="https://i.postimg.cc/Bn5Z2rFk/Screenshot-2025-01-28-185254.png">
 </p>
 upload the images and processing will start
 <p align="center">
-  <img src="https://xinntao.github.io/projects/GFPGAN_src/gfpgan_teaser.jpg">
+  <img src="https://i.postimg.cc/rpQ8P5Q9/Screenshot-2025-01-28-191930.png">
 </p>
+
 ## Figures
-Include relevant figures to demonstrate the model's performance:
-- Training loss curves
-- Generated images compared to ground truth
-- FID score evolution over epochs
+<p align="center">
+  <img src="https://i.postimg.cc/YqWCCGCp/image-8.jpg">
+</p>
+<p align="center">
+  <img src="https://i.postimg.cc/rpQ8P5Q9/Screenshot-2025-01-28-191930.png">
+</p>
 
 ## Contributing
 We welcome contributions to improve the project. Please follow these guidelines:
