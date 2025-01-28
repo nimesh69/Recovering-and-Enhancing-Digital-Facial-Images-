@@ -48,43 +48,87 @@ This project uses the **CelebA, FFHQ, Asian Faces, our own custom dataset** data
 ### Training Instructions
 To start training the model, run the following command:
 ```bash
-python train.py --dataset /path/to/processed_data --epochs 100 --batch_size 32 --lr 0.0002
+BASICSR_JIT=True python train.py -opt train_gfpgan_v1_simple.yml
 ```
+<p align="center">
+  <img src="https://xinntao.github.io/projects/GFPGAN_src/gfpgan_teaser.jpg">
+</p>
 
 ## Testing
 
 ### Evaluation Metrics
 The model is evaluated using the following metrics:
-- **Frechet Inception Distance (FID)**: Measures similarity between real and generated images.
-- **Inception Score (IS)**: Evaluates image quality and diversity.
+
+### **1. SSIM (Structural Similarity Index)**
+The **SSIM index** is a perceptual metric that measures the similarity between two images. It is designed to model the human visual system and quantify image quality degradation based on perceived structural information.
+
+#### Key Features of SSIM:
+- **Structural comparison**: SSIM evaluates changes in structural information, which is key to how humans perceive images.
+- **Components**: It considers three components: **luminance (brightness), contrast**, and **structure**.
+- **Range**: The SSIM value ranges from **-1 to 1**:
+  - **1** indicates the two images are identical.
+  - **0 or negative** values indicate significant dissimilarity.
+- **Calculation**:
+  SSIM is typically calculated using a sliding window over the image. The formula involves comparing the mean, variance, and covariance of the pixel intensities in corresponding windows.
+
+  **SSIM formula**:
+  \[
+  SSIM(x, y) = \frac{(2\mu_x\mu_y + C_1)(2\sigma_{xy} + C_2)}{(\mu_x^2 + \mu_y^2 + C_1)(\sigma_x^2 + \sigma_y^2 + C_2)}
+  \]
+  - \( \mu_x, \mu_y \): Mean pixel intensities of images \(x\) and \(y\).
+  - \( \sigma_x^2, \sigma_y^2 \): Variances of \(x\) and \(y\).
+  - \( \sigma_{xy} \): Covariance between \(x\) and \(y\).
+  - \( C_1, C_2 \): Small constants to stabilize the division.
+
+---
+
+### **2. PSNR (Peak Signal-to-Noise Ratio)**
+The **PSNR** measures the ratio between the maximum possible pixel value and the noise or distortion in an image. It quantifies image quality in terms of signal fidelity.
+
+#### Key Features of PSNR:
+- **Pixel-wise comparison**: PSNR is based on the pixel differences (mean squared error, MSE) between the original and distorted images.
+- **Mathematical simplicity**: It assumes that smaller errors correspond to better quality.
+- **Range**: PSNR is measured in **decibels (dB)**:
+  - Higher PSNR values indicate better quality (less distortion).
+  - Typical values for good-quality images: 30–50 dB.
+  - Lower than 20 dB indicates severe degradation.
+- **Calculation**:
+  \[
+  PSNR = 10 \cdot \log_{10} \left( \frac{MAX^2}{MSE} \right)
+  \]
+  - \( MAX \): Maximum possible pixel value (e.g., 255 for 8-bit images).
+  - \( MSE \): Mean Squared Error between the original and distorted image:
+    \[
+    MSE = \frac{1}{N} \sum_{i=1}^N (x_i - y_i)^2
+    \]
+    where \(x_i\) and \(y_i\) are pixel values in the original and distorted images.
 
 ### Generating Images
 To generate images from the trained model:
 ```bash
-python generate.py --model_path /path/to/trained_model.pth --input_image /path/to/input.jpg --output_image /path/to/output.jpg
+!BASICSR_JIT=True python inference_gfpgan.py -i inputs/uploads -o results -v 1.7 -s 1 --bg_upsampler realesrgan
 ```
-
-## Retraining
-To retrain the model with new data or hyperparameters:
-```bash
-python train.py --dataset /path/to/new_data --epochs 200 --batch_size 64 --lr 0.0001
-```
-Modify the hyperparameters in `config.py` as needed.
+- adjust version number
 
 ## React App Integration
 
 ### Interaction with Model
 The React app allows users to upload an image and receive a recovered facial image from the trained GAN model via an API.
-
+<p align="center">
+  <img src="https://xinntao.github.io/projects/GFPGAN_src/gfpgan_teaser.jpg">
+</p>
 ### Functionalities
 - Image upload and preview
 - Submit for processing
 - View results side-by-side with the input
+<p align="center">
+  <img src="https://xinntao.github.io/projects/GFPGAN_src/gfpgan_teaser.jpg">
+</p>
 
 ### Running the React App
 1. Navigate to the `react-app` directory:
    ```bash
-   cd react-app
+   cd project
    ```
 2. Install dependencies:
    ```bash
@@ -92,9 +136,28 @@ The React app allows users to upload an image and receive a recovered facial ima
    ```
 3. Start the development server:
    ```bash
-   npm start
+   npm start dev
    ```
-
+4. Run the API 
+      ```bash
+   python main.py
+   ```
+After starting the server you will see the following interface
+<p align="center">
+  <img src="https://xinntao.github.io/projects/GFPGAN_src/gfpgan_teaser.jpg">
+</p>
+click on Try now button to get started
+<p align="center">
+  <img src="https://xinntao.github.io/projects/GFPGAN_src/gfpgan_teaser.jpg">
+</p>
+you will see the following interface
+<p align="center">
+  <img src="https://xinntao.github.io/projects/GFPGAN_src/gfpgan_teaser.jpg">
+</p>
+upload the images and processing will start
+<p align="center">
+  <img src="https://xinntao.github.io/projects/GFPGAN_src/gfpgan_teaser.jpg">
+</p>
 ## Figures
 Include relevant figures to demonstrate the model's performance:
 - Training loss curves
@@ -106,7 +169,4 @@ We welcome contributions to improve the project. Please follow these guidelines:
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
 3. Commit your changes and submit a pull request.
-
-## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
 
