@@ -103,21 +103,32 @@ def main():
         arch = 'original'
         channel_multiplier = 1
         model_name = 'asianface(10k)'
-        # url = None
+        url = 'https://github.com/nimesh69/Recovering-and-Enhancing-Digital-Facial-Images-/releases/download/v1.0/asianface.10k.pth'
     elif args.version == '1.6':
         arch = 'original'
         channel_multiplier = 1
         model_name = 'asian(10k)+celebx(30k)'
-        # url = None
+        url = 'https://github.com/nimesh69/Recovering-and-Enhancing-Digital-Facial-Images-/releases/download/v2.0/asian.10k.+celebx.30k.pth'
     elif args.version == '1.7':
         arch = 'original'
         channel_multiplier = 1
-        model_name = 'asian+celebx+ffhq'
+        model_name = 'asian+celebx+ffhq(512)'
+        url = 'https://github.com/nimesh69/Recovering-and-Enhancing-Digital-Facial-Images-/releases/download/v3.0/asian+celebx+ffhq.pth'
     elif args.version == '1.8':
         arch = 'original(256)'
         channel_multiplier = 1
         model_name = 'aisan+ffhq+celebx(256)'
+        url = 'https://github.com/nimesh69/Recovering-and-Enhancing-Digital-Facial-Images-/releases/download/v4.0/aisan+ffhq+celebx.256.pth'
+    elif args.version == '1.9':
+        arch = 'original'
+        channel_multiplier = 1
+        model_name = 'net_g_latest.pth'
         # url = None
+    elif args.version == '2.0':
+        arch = 'original'
+        channel_multiplier = 1
+        model_name = 'all_dataset(512)'
+        url = 'https://github.com/nimesh69/Recovering-and-Enhancing-Digital-Facial-Images-/releases/download/v5.0/net_g_latest.pth'
 
     else:
         raise ValueError(f'Wrong model version {args.version}.')
