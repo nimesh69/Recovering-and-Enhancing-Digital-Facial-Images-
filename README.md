@@ -116,24 +116,30 @@ BASICSR_JIT=True python inference_gfpgan.py -i inputs/uploads -o results -v 1.7 
    npm install
    ```
 
-3. Start the development server:
-   ```bash
-   npm start dev
-   ```
-
-4. Run the API:
-   ```bash
-   python main.py
-   ```
-
-5. Update API endpoint in `main.py` and `trynow.tsx` files:  
+3. Update API endpoint in `main.py` and `trynow.tsx` files:  
    <p align="center">
      <img src="https://i.postimg.cc/9fpMH6FZ/code3.png">
    </p>
    <p align="center">
      <img src="https://i.postimg.cc/yNBd51B7/code4.png">
    </p>
+4. Specify the model:
+   <a href="https://postimg.cc/cgK32fJq" target="_blank"><img src="https://i.postimg.cc/DZ6cWgkz/code.png" alt="code"/></a>
+   ### 6.1 Adjust according to version number 
+   <a href="https://postimages.org/" target="_blank"><img src="https://i.postimg.cc/43CPjyQX/code1.png" alt="code1"/></a>
+5. To use 256*256 model(GFPGAN1.4.pth), you need to adjust the parameters  in `utils.py` just comment the 512 code and uncomment the 256
+   <a href="https://postimages.org/" target="_blank"><img src="https://i.postimg.cc/26rw8ttJ/code3.png" alt="code3"/></a>
+   <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/nLv2xx3B/code4.png' border='0' alt='code4'/></a>
 
+6. Start the development server:
+   ```bash
+   npm start dev
+   ```
+
+7. Run the API:
+   ```bash
+   BASICSR_JIT=True uvicorn main:app
+   ```
 ### Interface Preview
 
 - **Landing Page**  
