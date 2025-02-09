@@ -143,7 +143,7 @@ BASICSR_JIT=True python inference_gfpgan.py -i inputs/uploads -o results -v 1.7 
 
 - **Start Processing**  
   <p align="center">
-    <img src="https://i.postimg.cc/Bn5Z2rFk/Screenshot-2025-01-28-185254.png">
+    <img src="https://postimg.cc/G421CSqx">
   </p>
 
 - **Image Processing in Progress**  
