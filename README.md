@@ -18,7 +18,8 @@ cd GFPGAN
 conda create -n name python=3.9
 conda activate name
 ```
-
+ 
+ 
 ### 3. Install Dependencies
 ```bash
 pip install -r requirements.txt
